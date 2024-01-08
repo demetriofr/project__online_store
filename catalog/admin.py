@@ -10,7 +10,7 @@ from catalog.models import Product, Category
 class ProductAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'price_per_one', 'category',)
     list_filter = ('category',)
-    search_fields = ('name__icontains', 'description__icontains',)
+    search_fields = ('name', 'description',)
 
 
 @admin.register(Category)
