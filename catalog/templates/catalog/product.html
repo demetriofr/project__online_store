@@ -33,7 +33,7 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">{{ object.price_per_one }} ₽</h1>
                         <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                            <li>ОПИСАНИЕ: {{ object.description }}</li>
+                            <li>ОПИСАНИЕ: {{ object.description|truncatechars:100 }}</li>
                             <li>КАТЕГОРИЯ: {{ object.category }}</li>
                             <li>ДАТА СОЗДАНИЯ: {{ object.date_of_creation|date:"d.m.Y h:m" }}</li>
                             <li>ДАТА ИЗМЕНЕНИЯ: {{ object.date_of_change|date:"d.m.Y h:m" }}</li>

@@ -7,7 +7,12 @@ from catalog.models import Product
 
 
 def home(request):
-    return render(request, 'catalog/home.html')
+    product_list = Product.objects.all()
+    context = {
+        'object_list': product_list,
+        'title': 'Каталог'
+    }
+    return render(request, 'catalog/home.html', context)
 
 
 def contacts(request):

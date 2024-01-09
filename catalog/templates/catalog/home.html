@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -23,23 +24,25 @@
 
 <div class="container">
     <div class="row text-center">
-        <div class="col-3">
-            <div class="card mb-4 box-shadow">
-                <div class="card-header">
-                    <h4 class="my-0 font-weight-normal">Удобный сервис рассылок</h4>
-                </div>
-                <div class="card-body">
-                    <h1 class="card-title pricing-card-title">$ 140</h1>
-                    <ul class="list-unstyled mt-3 mb-4 text-start m-3">
-                        <li>- Неограниченная лицензия</li>
-                        <li>- Поддержка</li>
-                        <li>- Установка на сервер</li>
-                        <li>- Получение обновлений</li>
-                    </ul>
-                    <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+        {% for object in object_list %}
+            <div class="col-3">
+                <div class="card mb-4 box-shadow">
+                    <div class="card-header">
+                        <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">{{ object.price_per_one }} ₽</h1>
+                        <ul class="list-unstyled mt-3 mb-4 text-start m-3">
+                            <li>ОПИСАНИЕ: {{ object.description|truncatechars:100 }}</li>
+                            <li>КАТЕГОРИЯ: {{ object.category }}</li>
+                            <li>ДАТА СОЗДАНИЯ: {{ object.date_of_creation|date:"d.m.Y h:m" }}</li>
+                            <li>ДАТА ИЗМЕНЕНИЯ: {{ object.date_of_change|date:"d.m.Y h:m" }}</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                    </div>
                 </div>
             </div>
-        </div>
+        {% endfor %}
     </div>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
