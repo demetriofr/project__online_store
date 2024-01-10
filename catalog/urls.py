@@ -1,6 +1,6 @@
 from django.urls import path
 
-from catalog.views import home, contacts, product
+from catalog.views import contacts, product
 
 urlpatterns = [
     path('', product),
