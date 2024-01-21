@@ -1,20 +1,23 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
-from catalog.models import Product
+from catalog.models import Product, Category
 
 
 # Create your views here.
 
 
-def home(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list': product_list,
-        'title': 'Каталог'
-    }
-    return render(request, 'catalog/base.html', context)
+# FBV
+# def home(request):
+#     product_list = Product.objects.all()
+#     context = {
+#         'object_list': product_list,
+#         'title': 'Каталог'
+#     }
+#     return render(request, 'catalog/base.html', context)
 
 
+# FBV
 def contacts(request):
     if request.method == 'POST':
         name = request.POST.get('name')
@@ -24,11 +27,26 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def product(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list': product_list,
-        'title': 'Товары'
-    }
+# CBV
+# class Contacts():
+#     pass
 
-    return render(request, 'catalog/product.html', context)
+# CBV
+class ProductListView(ListView):
+    model = Product
+
+
+# FBV
+# def product(request):
+#     product_list = Product.objects.all()
+#     context = {
+#         'object_list': product_list,
+#         'title': 'Товары'
+#     }
+#
+#     return render(request, 'catalog/product_list.html', context)
+
+
+# FBV
+class CategoryListView(ListView):
+    model = Category
