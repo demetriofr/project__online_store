@@ -13,3 +13,11 @@ class Blog(models.Model):
     date_create = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     publication_indicator = models.BooleanField(default=True, verbose_name='признак публикации')
     number_of_view = models.IntegerField(default=0, verbose_name='количество просмотров')
+
+    def __str__(self):
+        return f'{self.title} {self.date_create}'
+
+    class Meta:
+        verbose_name = 'заголовок'
+        verbose_name_plural = 'заголовки'
+        ordering = ('title',)
