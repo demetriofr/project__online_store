@@ -34,3 +34,26 @@ class Category(models.Model):
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
         ordering = ('name',)
+
+
+class Version(models.Model):
+    """Модель «Версия», которая содержит следующие поля:
+            product: продукт,
+            number: nномер версии,
+            name: название версии,
+            indicator: признак текущей версии.
+    """
+
+    number = models.IntegerField(verbose_name='номер версии')
+    name = models.CharField(max_length=100, verbose_name='наименование версии')
+    indicator = models.BooleanField(default=True, verbose_name='признак текущей версии')
+
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, verbose_name='продукт')
+
+    def __str__(self):
+        return f'{self.name} - {self.product}'
+
+    class Meta:
+        verbose_name = 'Версия'
+        verbose_name_plural = 'Версии'
+        ordering = ('number',)
