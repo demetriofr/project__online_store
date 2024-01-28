@@ -5,8 +5,11 @@
         <h1 class="display-4">Skystore</h1>
         <p class="lead">Skystore - это идеальное место для хранения и представления вашей фермерской продукции, свежих фруктов, овощей и других натуральных лакомств для вашего покупателя!</p>
     </div>
+    <div class="col-12 mb-5">
+        <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить продукт</a>
+    </div>
     {% for object in object_list %}
-        <div class="col-3">
+        <div class="col-4">
             <div class="card mb-4 box-shadow">
                 <div class="card-header">
                     <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
@@ -21,6 +24,20 @@
                         <li>ДАТА ИЗМЕНЕНИЯ: {{ object.date_of_change|date:"d.m.Y h:m" }}</li>
                     </ul>
                     <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                    <hr>
+                    <div class="d-flex justify-content-center align-items-center">
+                        <div class="btn-group">
+                            <a href="{% url 'catalog:view_product' object.pk %}" type='button' class="btn btn-sm btn-outline-secondary">
+                                Просмотр
+                            </a>
+                            <a href="{% url 'catalog:update_product' object.pk %}" type="button" class="btn btn-sm btn-outline-secondary">
+                                Редактирование
+                            </a>
+                            <a href="{% url 'catalog:delete_product' object.pk %}" type='button' class="btn btn-sm btn-outline-danger">
+                                Удаление
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
